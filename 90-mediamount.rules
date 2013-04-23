@@ -1,0 +1,4 @@
+# /etc/udev/rules.d/90-mediamount.rules
+
+ACTION=="add", ENV{DEVTYPE}=="partition", RUN+="/usr/local/bin/mediamount %N"
+

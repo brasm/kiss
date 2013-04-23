@@ -1,0 +1,11 @@
+#!/bin/bash
+# /usr/local/bin/mediamount
+
+# only mount /dev/sd* devices
+[[ $1 =~ /dev/sd[a-z][0-9] ]] ||  exit
+
+uuid=`blkid $1 | cut -d\" -f2`
+target=/media/$uuid
+test -d $target || mkdir $target
+mount -o ro  $1 $target
+
